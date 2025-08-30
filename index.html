@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Estilo Pessoal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f6f6f6; margin: 0; }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 24px 8px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px #ddd;
+        }
+        h1 { color: #165b16; margin-top: 0px; text-align: center; font-size: 2.1em;}
+        .instructions { background: #e3f5e2; border-radius: 6px; padding: 15px 20px; margin-bottom: 28px; font-size: 1em;}
+        #result { font-size: 1.2em; font-weight: bold; color: #165b16; margin: 18px 0; text-align: center;}
+        .destaque {
+            font-size: 1.4em; font-weight: bold; color: #165b16;
+            margin-top: 6px; margin-bottom: 8px; text-align: center;}
+        .parabens {
+            font-size:1.2em; color:#111; margin-top:20px; margin-bottom:2px;
+            text-align:center;}
+        .question-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 1em;}
+        .question-table th, .question-table td { padding: 7px; text-align: center; border-bottom: 1px solid #eee; vertical-align: middle; }
+        .question-table th { background: #f2fdf2; color: #165b16; }
+        .options-container { display: flex; justify-content: center; gap: 9px;}
+        .options-container label { cursor: pointer; user-select: none; font-size: 1em; }
+        input[type=radio] { margin-right: 4px; cursor: pointer;}
+        .btn-center { display: flex; justify-content: center; margin-top: 24px;}
+        .btn-teste {
+            background: #165b16; color: #fff; border: none; padding: 12px 32px;
+            font-size: 1em; border-radius: 7px; cursor: pointer; font-weight: bold;
+            margin: 0 8px 0 8px; box-shadow: 0 2px 8px #c2e3c2; transition:background 0.2s;
+        }
+        .btn-teste:hover { background: #0d3c0e; }
+        #matrixDiv { width: 100%; margin: 0 auto 0 auto; display: flex; justify-content: center; }
+        #matrixChart { width: 100%; max-width: 480px; height: auto; display: block; margin: 40px auto 20px auto; background: #fff; border: none; border-radius: 5px;}
+        .credits {
+            font-size: 10px; color: #888; text-align: center; margin-top: 30px;
+            margin-bottom: 8px;letter-spacing: 0.3px;
+        }
+        .credits a {
+            color: #888; text-decoration: underline;
+        }
+        .credits a:hover {
+            color: #165b16; text-decoration: underline;
+        }
+        @media (max-width: 650px) {
+            .container { max-width:100vw; margin:8px auto; padding:6vw 2vw;}
+            .question-table th, .question-table td { font-size: 0.96em; padding: 3px;}
+            #matrixChart {max-width:99vw;}
+            h1 {font-size: 1.3em;}
+            .destaque {font-size: 1em;}
+        }
+        @media (max-width: 400px) {
+            #matrixChart {max-width:95vw;}
+            h1 {font-size: 1.1em;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Teste de Estilo Pessoal</h1>
+    <div class="instructions">
+        <strong>Este teste permitirá que você entenda seu estilo pessoal, ou seja, a forma específica como você exerce seus dons ao servir aos outros.</strong>
+        <ul>
+            <li>Para cada item, assinale a pontuação de <strong>1 a 5</strong>, de acordo com a proximidade à declaração que melhor descreve você na maioria das situações.</li>
+            <li>Não responda de acordo com o que acha que é esperado, mas como você realmente é.</li>
+            <li>Selecione o comportamento ou reação que viria naturalmente, se você soubesse que poderia se expressar sem restrições ou consequências.</li>
+        </ul>
+        <div>
+            <b>Você deve marcar:</b><br>
+            1 – totalmente representado pela declaração à <b>esquerda</b> (“fazendo algo para as pessoas”)<br>
+            2 – tende mais para a declaração à esquerda<br>
+            3 – está equilibrado entre as duas declarações<br>
+            4 – tende mais para a declaração à <b>direita</b> (“estando com as pessoas”)<br>
+            5 – totalmente representado pela declaração à direita
+        </div>
+    </div>
+    <form id="test-form">
+        <h3>Como Você é Motivado?</h3>
+        <table class="question-table">
+            <tr><td>fazendo algo para as pessoas</td><td><div class="options-container">
+                <label><input type="radio" name="motivation1" value="1" required />1</label>
+                <label><input type="radio" name="motivation1" value="2" />2</label>
+                <label><input type="radio" name="motivation1" value="3" />3</label>
+                <label><input type="radio" name="motivation1" value="4" />4</label>
+                <label><input type="radio" name="motivation1" value="5" />5</label>
+            </div></td><td>estando com as pessoas</td></tr>
+            <tr><td>focalizar o alvo</td><td><div class="options-container">
+                <label><input type="radio" name="motivation2" value="1" required />1</label>
+                <label><input type="radio" name="motivation2" value="2" />2</label>
+                <label><input type="radio" name="motivation2" value="3" />3</label>
+                <label><input type="radio" name="motivation2" value="4" />4</label>
+                <label><input type="radio" name="motivation2" value="5" />5</label>
+            </div></td><td>focalizar os relacionamentos</td></tr>
+            <tr><td>o avanço de uma causa</td><td><div class="options-container">
+                <label><input type="radio" name="motivation3" value="1" required />1</label>
+                <label><input type="radio" name="motivation3" value="2" />2</label>
+                <label><input type="radio" name="motivation3" value="3" />3</label>
+                <label><input type="radio" name="motivation3" value="4" />4</label>
+                <label><input type="radio" name="motivation3" value="5" />5</label>
+            </div></td><td>o sentimento da comunidade</td></tr>
+            <tr><td>termino uma tarefa</td><td><div class="options-container">
+                <label><input type="radio" name="motivation4" value="1" required />1</label>
+                <label><input type="radio" name="motivation4" value="2" />2</label>
+                <label><input type="radio" name="motivation4" value="3" />3</label>
+                <label><input type="radio" name="motivation4" value="4" />4</label>
+                <label><input type="radio" name="motivation4" value="5" />5</label>
+            </div></td><td>construo um relacionamento</td></tr>
+            <tr><td>na hora</td><td><div class="options-container">
+                <label><input type="radio" name="motivation5" value="1" required />1</label>
+                <label><input type="radio" name="motivation5" value="2" />2</label>
+                <label><input type="radio" name="motivation5" value="3" />3</label>
+                <label><input type="radio" name="motivation5" value="4" />4</label>
+                <label><input type="radio" name="motivation5" value="5" />5</label>
+            </div></td><td>quando todos estiverem presentes</td></tr>
+            <tr><td>cumprir prazos</td><td><div class="options-container">
+                <label><input type="radio" name="motivation6" value="1" required />1</label>
+                <label><input type="radio" name="motivation6" value="2" />2</label>
+                <label><input type="radio" name="motivation6" value="3" />3</label>
+                <label><input type="radio" name="motivation6" value="4" />4</label>
+                <label><input type="radio" name="motivation6" value="5" />5</label>
+            </div></td><td>manter um time unido</td></tr>
+            <tr><td>ação</td><td><div class="options-container">
+                <label><input type="radio" name="motivation7" value="1" required />1</label>
+                <label><input type="radio" name="motivation7" value="2" />2</label>
+                <label><input type="radio" name="motivation7" value="3" />3</label>
+                <label><input type="radio" name="motivation7" value="4" />4</label>
+                <label><input type="radio" name="motivation7" value="5" />5</label>
+            </div></td><td>comunicação</td></tr>
+        </table>
+        <h3>Como Você se Estrutura?</h3>
+        <table class="question-table">
+            <tr><td>ser espontâneo</td><td><div class="options-container">
+                <label><input type="radio" name="structure1" value="1" required />1</label>
+                <label><input type="radio" name="structure1" value="2" />2</label>
+                <label><input type="radio" name="structure1" value="3" />3</label>
+                <label><input type="radio" name="structure1" value="4" />4</label>
+                <label><input type="radio" name="structure1" value="5" />5</label>
+            </div></td><td>seguir um plano fixo</td></tr>
+            <tr><td>gerais</td><td><div class="options-container">
+                <label><input type="radio" name="structure2" value="1" required />1</label>
+                <label><input type="radio" name="structure2" value="2" />2</label>
+                <label><input type="radio" name="structure2" value="3" />3</label>
+                <label><input type="radio" name="structure2" value="4" />4</label>
+                <label><input type="radio" name="structure2" value="5" />5</label>
+            </div></td><td>específicas</td></tr>
+            <tr><td>deixar opções em aberto</td><td><div class="options-container">
+                <label><input type="radio" name="structure3" value="1" required />1</label>
+                <label><input type="radio" name="structure3" value="2" />2</label>
+                <label><input type="radio" name="structure3" value="3" />3</label>
+                <label><input type="radio" name="structure3" value="4" />4</label>
+                <label><input type="radio" name="structure3" value="5" />5</label>
+            </div></td><td>resolver logo</td></tr>
+            <tr><td>variedade</td><td><div class="options-container">
+                <label><input type="radio" name="structure4" value="1" required />1</label>
+                <label><input type="radio" name="structure4" value="2" />2</label>
+                <label><input type="radio" name="structure4" value="3" />3</label>
+                <label><input type="radio" name="structure4" value="4" />4</label>
+                <label><input type="radio" name="structure4" value="5" />5</label>
+            </div></td><td>rotina</td></tr>
+            <tr><td>improvisar</td><td><div class="options-container">
+                <label><input type="radio" name="structure5" value="1" required />1</label>
+                <label><input type="radio" name="structure5" value="2" />2</label>
+                <label><input type="radio" name="structure5" value="3" />3</label>
+                <label><input type="radio" name="structure5" value="4" />4</label>
+                <label><input type="radio" name="structure5" value="5" />5</label>
+            </div></td><td>seguir um plano</td></tr>
+            <tr><td>chata</td><td><div class="options-container">
+                <label><input type="radio" name="structure6" value="1" required />1</label>
+                <label><input type="radio" name="structure6" value="2" />2</label>
+                <label><input type="radio" name="structure6" value="3" />3</label>
+                <label><input type="radio" name="structure6" value="4" />4</label>
+                <label><input type="radio" name="structure6" value="5" />5</label>
+            </div></td><td>segura (posso descansar)</td></tr>
+            <tr><td>resolvo as coisas ao longo do projeto</td><td><div class="options-container">
+                <label><input type="radio" name="structure7" value="1" required />1</label>
+                <label><input type="radio" name="structure7" value="2" />2</label>
+                <label><input type="radio" name="structure7" value="3" />3</label>
+                <label><input type="radio" name="structure7" value="4" />4</label>
+                <label><input type="radio" name="structure7" value="5" />5</label>
+            </div></td><td>sigo um plano</td></tr>
+        </table>
+        <div class="btn-center">
+            <button type="button" class="btn-teste" onclick="calculateScore()">Calcular Pontuação</button>
+        </div>
+    </form>
+    <div id="result"></div>
+    <div id="matrixDiv">
+        <canvas id="matrixChart" width="480" height="480"></canvas>
+    </div>
+    <div class="btn-center">
+        <button id="restart-btn" class="btn-teste" onclick="restartTest()">Recomeçar o teste</button>
+    </div>
+    <div class="parabens" id="parabens" style="display:none;">Parabéns, você encontrou seu estilo pessoal!</div>
+    <div class="destaque" id="quadranteNome"></div>
+    <div class="credits">
+        Digitalizado por <a href="https://www.instagram.com/rafaelrfg" target="_blank" rel="noopener noreferrer">@rafaelrfg</a>
+    </div>
+</div>
+<script>
+function drawMatrix(motivationTotal = 21, structureTotal = 21) {
+    const canvas = document.getElementById('matrixChart');
+    const ctx = canvas.getContext('2d');
+    let cw = canvas.parentNode.offsetWidth;
+    canvas.width = cw < 480 ? cw : 480;
+    canvas.height = canvas.width;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const margin = canvas.width * 0.125,
+          plotSize = canvas.width - 2 * margin,
+          quadSize = plotSize / 2;
+    const minScore = 7, maxScore = 35;
+    const verde = "#165b16";
+    const verdeClaro = "#e3f5e2";
+
+    ctx.save();
+    ctx.fillStyle = verdeClaro;
+    ctx.globalAlpha = 0.32;
+    ctx.fillRect(margin, margin, plotSize, plotSize);
+    ctx.globalAlpha = 1;
+
+    ctx.strokeStyle = verde; ctx.lineWidth=3;
+    ctx.beginPath();
+    ctx.moveTo(margin+quadSize, margin);
+    ctx.lineTo(margin+quadSize, margin+plotSize);
+    ctx.moveTo(margin, margin+quadSize);
+    ctx.lineTo(margin+plotSize, margin+quadSize);
+    ctx.stroke();
+
+    ctx.font = `bold ${canvas.width*0.049}px Arial`; ctx.fillStyle=verde; ctx.textAlign="center";
+    ctx.fillText("Motivado por TAREFAS", margin+plotSize/2, margin-18);
+    ctx.font = `bold ${canvas.width*0.044}px Arial`;
+    ctx.fillText("Motivado por PESSOAS", margin+plotSize/2, margin+plotSize+35);
+
+    ctx.save();
+    ctx.translate(margin-28, margin+plotSize/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.font = `bold ${canvas.width*0.044}px Arial`;
+    ctx.fillText("Não Estruturado",0,0);
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(margin+plotSize+28, margin+plotSize/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.font = `bold ${canvas.width*0.044}px Arial`;
+    ctx.fillText("Estruturado",0,0);
+    ctx.restore();
+
+    ctx.font=`${canvas.width*0.031}px Arial`; ctx.fillStyle=verde; ctx.textAlign="center";
+    let marks = [7,9,11,13,15,17,19,21,23,25,27,29,31,33,35];
+    marks.forEach(v=>{
+        let x = margin + ((v-minScore)/(maxScore-minScore))*plotSize;
+        ctx.fillText(v, x, margin+plotSize+16);
+        let y = margin + ((v-minScore)/(maxScore-minScore))*plotSize;
+        ctx.fillText(v, margin-14, y+5);
+    });
+
+    ctx.font=`bold ${canvas.width*0.048}px Arial`; ctx.fillStyle=verde; ctx.textAlign="center";
+    ctx.fillText("REALIZADOR", margin+quadSize/2, margin+quadSize/2-14);
+    ctx.font=`bold ${canvas.width*0.037}px Arial`; ctx.fillText("ESPONTÂNEO", margin+quadSize/2, margin+quadSize/2+23);
+
+    ctx.font=`bold ${canvas.width*0.048}px Arial`; ctx.fillText("REALIZADOR", margin+quadSize+quadSize/2, margin+quadSize/2-14);
+    ctx.font=`bold ${canvas.width*0.037}px Arial`; ctx.fillText("ORDENADO", margin+quadSize+quadSize/2, margin+quadSize/2+23);
+
+    ctx.font=`bold ${canvas.width*0.048}px Arial`; ctx.fillText("RELACIONAL", margin+quadSize/2, margin+quadSize+quadSize/2-14);
+    ctx.font=`bold ${canvas.width*0.037}px Arial`; ctx.fillText("ESPONTÂNEO", margin+quadSize/2, margin+quadSize+quadSize/2+23);
+
+    ctx.font=`bold ${canvas.width*0.048}px Arial`; ctx.fillText("RELACIONAL", margin+quadSize+quadSize/2, margin+quadSize+quadSize/2-14);
+    ctx.font=`bold ${canvas.width*0.037}px Arial`; ctx.fillText("ORDENADO", margin+quadSize+quadSize/2, margin+quadSize+quadSize/2+23);
+
+    const posX  = margin + ((structureTotal-minScore)/(maxScore-minScore))*plotSize;
+    const posY  = margin + ((motivationTotal-minScore)/(maxScore-minScore))*plotSize;
+    ctx.beginPath();
+    ctx.arc(posX, posY, canvas.width*0.024, 0, 2*Math.PI);
+    ctx.fillStyle=verde;
+    ctx.fill();
+    ctx.font=`bold ${canvas.width*0.030}px Arial`; ctx.fillStyle=verde;
+    ctx.fillText("Você", posX, posY-canvas.width*0.036);
+    ctx.restore();
+}
+
+function getQuadrante(motivationTotal, structureTotal) {
+    const midMotiv = 21;
+    const midStruct = 21;
+    if (motivationTotal <= midMotiv && structureTotal <= midStruct) return "REALIZADOR ESPONTÂNEO";
+    if (motivationTotal <= midMotiv && structureTotal > midStruct) return "REALIZADOR ORDENADO";
+    if (motivationTotal > midMotiv && structureTotal <= midStruct) return "RELACIONAL ESPONTÂNEO";
+    if (motivationTotal > midMotiv && structureTotal > midStruct) return "RELACIONAL ORDENADO";
+    return "";
+}
+
+function calculateScore() {
+    const motivationScores = [];
+    const structureScores = [];
+    let preenchidas = 0;
+    for (let i = 1; i <=7; i++) {
+        let mInput = document.querySelector('input[name="motivation' + i + '"]:checked');
+        let sInput = document.querySelector('input[name="structure' + i + '"]:checked');
+        if (mInput) { motivationScores.push(parseInt(mInput.value, 10)); preenchidas++; }
+        if (sInput) { structureScores.push(parseInt(sInput.value, 10)); preenchidas++; }
+    }
+    const parabens = document.getElementById('parabens');
+    const quadranteNome = document.getElementById('quadranteNome');
+    parabens.style.display = 'none';
+    quadranteNome.textContent = "";
+    if (preenchidas < 14) {
+        document.getElementById('result').textContent = "Responda todas as questões para visualizar sua posição no gráfico.";
+        drawMatrix();
+        return;
+    }
+    const motivationTotal = motivationScores.reduce((a,b)=>a+b,0);
+    const structureTotal = structureScores.reduce((a,b)=>a+b,0);
+    document.getElementById('result').textContent = `Motivação: ${motivationTotal} | Estrutura: ${structureTotal}`;
+    drawMatrix(motivationTotal,structureTotal);
+    parabens.style.display = '';
+    quadranteNome.textContent = getQuadrante(motivationTotal, structureTotal);
+}
+
+function restartTest() {
+    document.getElementById('test-form').reset();
+    document.getElementById('result').textContent = "";
+    drawMatrix();
+    document.getElementById('parabens').style.display = 'none';
+    document.getElementById('quadranteNome').textContent = "";
+}
+window.addEventListener('resize', ()=>drawMatrix());
+window.onload = ()=>{ drawMatrix(); }
+</script>
+</body>
+</html>
